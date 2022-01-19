@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  besu:
+    image: hyperledger/besu:21.10.8
+    restart: "always"
+    command:
+      - --config-file=/config/config.toml
+    environment:
+      - OTEL_RESOURCE_ATTRIBUTES=service.name=c1-evm-passive
+      - LOG4J_CONFIGURATION_FILE=/config/log-config.xml
+    volumes:
+      - ./config:/config
+      - ./storage/data:/opt/besu/data
+      - ./storage/logs:/tmp/besu
+    network_mode: "host"
+#    ports:
+#      - 8545:8545/tcp
+#      - 8546:8546/tcp
+#      - 8547:8547/tcp
+#      - 9545:9545/tcp
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "1m"
+        max-file: "10"
