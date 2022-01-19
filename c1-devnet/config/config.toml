@@ -1,0 +1,55 @@
+
+logging="INFO"
+data-path="/opt/besu/data"
+host-allowlist=["*"]
+
+# rpc
+rpc-tx-feecap=1000000000000000000
+
+# rpc-http
+rpc-http-enabled=true
+rpc-http-host="0.0.0.0"
+rpc-http-port=8545
+rpc-http-cors-origins=["*"]
+rpc-http-api=["TXPOOL","TRACE","WEB3","ETH","NET"]
+rpc-http-max-active-connections=2048
+
+# rpc-ws
+rpc-ws-enabled=true
+rpc-ws-host="0.0.0.0"
+rpc-ws-port=8546
+rpc-ws-api=["TXPOOL","TRACE","WEB3","ETH","NET"]
+rpc-ws-max-active-connections=2048
+
+# graphql
+graphql-http-enabled=false
+graphql-http-host="127.0.0.1"
+graphql-http-port=8547
+graphql-http-cors-origins=["*"]
+
+# metrics
+metrics-enabled=true
+metrics-host="0.0.0.0"
+metrics-port=9545
+
+# miner
+min-gas-price=30000000000
+
+# debug
+revert-reason-enabled=true
+sync-mode="FULL"
+
+# genesis
+genesis-file="/config/genesis.json"
+
+# permissions
+permissions-nodes-config-file-enabled=false
+permissions-nodes-config-file="/config/permissions_config.toml"
+
+# Discovery at boot is set to a list of static files, but will also discover new nodes should they be added
+# static nodes
+static-nodes-file="/config/static-nodes.json"
+discovery-enabled=false
+
+# nat
+nat-method="NONE"
