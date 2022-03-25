@@ -17,6 +17,8 @@ See here for more info <https://besu.hyperledger.org/en/stable/Concepts/Node-Typ
 ### Start Script
 There is a simple start script provided to make starting/stoping/cleaning up easier. By default it will launch the EVM in c1-devnet.
 
+**NOTE**: Add the `-o` flag to all commands if using WSL & MacOS (disables Host Network mode and Set Ports)
+
 - Script Help for the most up to date commands `./start -h`
 - Find Network(s) to start: `./start -l`
 - Start EVM: `./start -n $NETWORK -r`
