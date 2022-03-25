@@ -1,4 +1,2 @@
-**/storage/data/DATABASE_METADATA.json
-**/storage/data/caches/
-**/storage/data/database/
-**/storage/data/key
+**/storage/
+!**/**/storage/**/.keep
