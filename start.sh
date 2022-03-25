@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# This file:
+
 #                           @@@@@@@@@@@@
 #                       @@@@@@@@@@@@@@@@@
 #                   @@@@@@@@@@@@@@@@@@@@@@@@     @@@@@@
@@ -23,10 +23,11 @@ set -o nounset
 set -o pipefail
 
 : ${NETWORK:='c1-devnet'}
-
-##############################################################################
-# Functions
-##############################################################################
+: ${COMPOSE_FILE:='docker-compose.yml'}
+: ${RUN:=''}
+: ${STOP:=''}
+: ${TAIL:=''}
+: ${CLEAN:=''}
 
 function getNetworks() {
   if [ -n "$(command -v stat)" ]; then
@@ -41,28 +42,7 @@ function getNetworks() {
   fi
 }
 
-runEvm() {
-  docker-compose -f ${NETWORK}/docker-compose.yml -p ${NETWORK}-passive build
-  docker-compose -f ${NETWORK}/docker-compose.yml -p ${NETWORK}-passive up --detach --force-recreate
-}
-stopEvm() {
-  docker-compose -f ${NETWORK}/docker-compose.yml -p ${NETWORK}-passive stop
-}
-
-cleanEvm() {
-  stopEvm
-  docker-compose -f ${NETWORK}/docker-compose.yml -p ${NETWORK}-passive down
-}
-
-logsEvm() {
-  docker-compose -f ${NETWORK}/docker-compose.yml -p ${NETWORK}-passive logs --follow --tail="all"
-}
-
 export -f getNetworks
-export -f runEvm
-export -f stopEvm
-export -f cleanEvm
-export -f logsEvm
 
 print_help() {
   echo ">>> Usage:"
@@ -79,17 +59,19 @@ print_help() {
   echo "-s | Pass to Stop the EVM Network"
   echo "-t | Pass to tail logs of the EVM Network"
   echo "-c | Pass to cleanup the EVM Network containers"
+  echo "-o | Pass this Flag for non-linux Systems (disables Host Network and sets local Ports)"
   echo "-h | List this help menu"
 }
 
-while getopts n:hlrstc option; do
+while getopts n:ohlrstc option; do
   case "${option}" in
 
   n) export NETWORK=${OPTARG} ;;
-  r) runEvm ;;
-  s) stopEvm ;;
-  t) logsEvm ;;
-  c) cleanEvm ;;
+  r) export RUN="TRUE" ;;
+  s) export STOP="TRUE" ;;
+  t) export TAIL="TRUE" ;;
+  c) export CLEAN="true" ;;
+  o) export COMPOSE_FILE="docker-compose-non-linux.yml" ;;
   l) getNetworks ;;
   h)
     print_help
@@ -97,3 +79,41 @@ while getopts n:hlrstc option; do
     ;;
   esac
 done
+
+runEvm() {
+  docker-compose -f ${NETWORK}/${COMPOSE_FILE} -p ${NETWORK}-passive build
+  docker-compose -f ${NETWORK}/${COMPOSE_FILE} -p ${NETWORK}-passive up --detach --force-recreate
+}
+stopEvm() {
+  docker-compose -f ${NETWORK}/${COMPOSE_FILE} -p ${NETWORK}-passive stop
+}
+
+cleanEvm() {
+  stopEvm
+  docker-compose -f ${NETWORK}/${COMPOSE_FILE} -p ${NETWORK}-passive down
+}
+
+logsEvm() {
+  docker-compose -f ${NETWORK}/${COMPOSE_FILE} -p ${NETWORK}-passive logs --follow --tail="all"
+}
+
+export -f runEvm
+export -f stopEvm
+export -f cleanEvm
+export -f logsEvm
+
+if [ -n "${RUN}" ]; then
+  runEvm
+fi
+
+if [ -n "${STOP}" ]; then
+  stopEvm
+fi
+
+if [ -n "${CLEAN}" ]; then
+  cleanEvm
+fi
+
+if [ -n "${TAIL}" ]; then
+  logsEvm
+fi
