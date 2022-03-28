@@ -47,7 +47,7 @@ permissions-nodes-config-file-enabled=false
 permissions-nodes-config-file="/config/permissions_config.toml"
 
 # permission contract
-permissions-accounts-contract-enabled=true
+permissions-accounts-contract-enabled=false
 permissions-accounts-contract-address="0x0000000000000000000000000000000000008888"
 permissions-nodes-contract-enabled=false
 permissions-nodes-contract-address="0x0000000000000000000000000000000000009999"
