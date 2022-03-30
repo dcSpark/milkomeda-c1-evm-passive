@@ -13,6 +13,8 @@ See here for more info <https://besu.hyperledger.org/en/stable/Concepts/Node-Typ
   - [Change to Full Node](#change-to-full-node)
 - [Troubleshooting](#troubleshooting)
   - [Not Syncing](#not-syncing)
+  - [Permission Denied](#permission-denied)
+    - [Known Errors for this remediation](#known-errors-for-this-remediation)
 
 ## Usage
 
@@ -23,11 +25,11 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
 
 - Script Help for the most up to date commands `./start -h`
 - Find Network(s) to start: `./start -l`
-- Start EVM: `./start -n $NETWORK -r`
-  - Add Log Tailing: `./start -n $NETWORK -r -t`
-- Stop EVM: `./start -n $NETWORK -s`
-- Tail logs: `./start -n $NETWORK -t`
-- Cleanup EVM: `./start -n $NETWORK -c`
+- Start EVM: `./start -n ${NETWORK} -r`
+  - Add Log Tailing: `./start -n ${NETWORK} -r -t`
+- Stop EVM: `./start -n ${NETWORK} -s`
+- Tail logs: `./start -n ${NETWORK} -t`
+- Cleanup EVM: `./start -n ${NETWORK} -c`
 
 ### Docker Compose Direct
 
@@ -47,7 +49,7 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
 ### Change to Full Node
 **NOTE**: If you enable sync-mode="FAST" then you need 5 peers before it'll begin syncing. The setting to modify this is below
 
-- Edit the config file at `$Network/config/config.toml`
+- Edit the config file at `${NETWORK}/config/config.toml`
   - Change `sync-mode="FULL"` to `sync-mode="FAST"`
   - **Optional**: Add number of minimum peers to config file (e.g.; `fast-sync-min-peers=2`). Also can be added to docker-compose.yml under the Command section as `--fast-sync-min-peers=2`
 
@@ -58,3 +60,16 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
 2. Trying restarting the service
   - `docker-compose -f docker-compose.yml -p ${NETWORK}-passive restart`
 3. If issue persists, run the commands under the [Usage](#usage) section in this order `Stop EVM` `Clean EVM` `Start EVM`
+
+### Permission Denied
+
+If you get a Permission Denied error, run the following command(s)
+
+- `chmod a+w -R ${NETWORK}/storage`
+  - You may have to restart `docker-compose -f docker-compose.yml -p ${NETWORK}-passive restart`
+
+#### Known Errors for this remediation
+
+```
+ANTLR Runtime version 4.7.1 used for parser compilation does not match the current runtime version 4.8/opt/besu/data/DATABASE_METADATA.json (Permission denied)
+```
