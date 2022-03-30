@@ -11,6 +11,8 @@ See here for more info <https://besu.hyperledger.org/en/stable/Concepts/Node-Typ
   - [Docker Compose Direct](#docker-compose-direct)
 - [Config](#config)
   - [Change to Full Node](#change-to-full-node)
+- [Troubleshooting](#troubleshooting)
+  - [Not Syncing](#not-syncing)
 
 ## Usage
 
@@ -43,5 +45,16 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
 ## Config
 
 ### Change to Full Node
+**NOTE**: If you enable sync-mode="FAST" then you need 5 peers before it'll begin syncing. The setting to modify this is below
+
 - Edit the config file at `$Network/config/config.toml`
-- Change `sync-mode="FULL"` to `sync-mode="FAST"`
+  - Change `sync-mode="FULL"` to `sync-mode="FAST"`
+  - **Optional**: Add number of minimum peers to config file (e.g.; `fast-sync-min-peers=2`). Also can be added to docker-compose.yml under the Command section as `--fast-sync-min-peers=2`
+
+## Troubleshooting
+
+### Not Syncing
+1. Pull Latest Updates from Github
+2. Trying restarting the service
+  - `docker-compose -f docker-compose.yml -p ${NETWORK}-passive restart`
+3. If issue persists, run the commands under the [Usage](#usage) section in this order `Stop EVM` `Clean EVM` `Start EVM`
