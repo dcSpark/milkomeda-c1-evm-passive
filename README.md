@@ -25,11 +25,11 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
 
 - Script Help for the most up to date commands `./start -h`
 - Find Network(s) to start: `./start -l`
-- Start EVM: `./start -n ${NETWORK} -r`
+- Start EVM: `./start.sh -n ${NETWORK} -r`
   - Add Log Tailing: `./start -n ${NETWORK} -r -t`
-- Stop EVM: `./start -n ${NETWORK} -s`
-- Tail logs: `./start -n ${NETWORK} -t`
-- Cleanup EVM: `./start -n ${NETWORK} -c`
+- Stop EVM: `./start.sh -n ${NETWORK} -s`
+- Tail logs: `./start.sh -n ${NETWORK} -t`
+- Cleanup EVM: `./start.sh -n ${NETWORK} -c`
 
 ### Docker Compose Direct
 
@@ -63,8 +63,16 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
 
 ### Permission Denied
 
-If you get a Permission Denied error, run the following command(s)
+If you get a Permission Denied error,  e.g.:
+```
+root@blockscout:~/milkomeda-evm-passive# docker-compose -f c1-devnet/docker-compose.yml -p c1-devnet-passive up 
+[+] Running 1/0
+ ⠿ Container c1-devnet-passive-besu-1  Created                                                                                                                                                                              0.0s
+Attaching to c1-devnet-passive-besu-1
+c1-devnet-passive-besu-1  | 2022-04-05 14:14:16,508 main ERROR Unable to create file /tmp/besu/besu-blockscout.log java.io.IOException: Permission denied
+```
 
+run the following command(s),
 - `chmod a+w -R ${NETWORK}/storage`
   - You may have to restart `docker-compose -f docker-compose.yml -p ${NETWORK}-passive restart`
 
