@@ -37,7 +37,11 @@ min-gas-price=60000000000
 
 # debug
 revert-reason-enabled=true
+
+# sync mode
 sync-mode="FULL"
+#sync-mode="FAST"
+#fast-sync-min-peers=2
 
 # genesis
 genesis-file="/config/genesis.json"

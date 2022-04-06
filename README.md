@@ -23,10 +23,10 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
 
 **NOTE**: Add the `-o` flag to all commands if using WSL & MacOS (disables Host Network mode and Set Ports)
 
-- Script Help for the most up to date commands `./start -h`
-- Find Network(s) to start: `./start -l`
+- Script Help for the most up to date commands `./start.sh -h`
+- Find Network(s) to start: `./start.sh -l`
 - Start EVM: `./start.sh -n ${NETWORK} -r`
-  - Add Log Tailing: `./start -n ${NETWORK} -r -t`
+  - Add Log Tailing: `./start.sh -n ${NETWORK} -r -t`
 - Stop EVM: `./start.sh -n ${NETWORK} -s`
 - Tail logs: `./start.sh -n ${NETWORK} -t`
 - Cleanup EVM: `./start.sh -n ${NETWORK} -c`
@@ -65,7 +65,7 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
 
 If you get a Permission Denied error,  e.g.:
 ```
-root@blockscout:~/milkomeda-evm-passive# docker-compose -f c1-devnet/docker-compose.yml -p c1-devnet-passive up 
+root@blockscout:~/milkomeda-evm-passive# docker-compose -f c1-devnet/docker-compose.yml -p c1-devnet-passive up
 [+] Running 1/0
  ⠿ Container c1-devnet-passive-besu-1  Created                                                                                                                                                                              0.0s
 Attaching to c1-devnet-passive-besu-1
