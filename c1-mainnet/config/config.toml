@@ -37,7 +37,11 @@ min-gas-price=60000000000
 
 # debug
 revert-reason-enabled=true
+
+# sync mode
 sync-mode="FULL"
+#sync-mode="FAST"
+#fast-sync-min-peers=2
 
 # genesis
 genesis-file="/config/genesis.json"
@@ -46,17 +50,10 @@ genesis-file="/config/genesis.json"
 permissions-nodes-config-file-enabled=false
 permissions-nodes-config-file="/config/permissions_config.toml"
 
-# permission contract
-permissions-accounts-contract-enabled=false
-permissions-accounts-contract-address="0x0000000000000000000000000000000000008888"
-permissions-nodes-contract-enabled=false
-permissions-nodes-contract-address="0x0000000000000000000000000000000000009999"
-permissions-nodes-contract-version=2
-
 # Discovery at boot is set to a list of static files, but will also discover new nodes should they be added
 # static nodes
 static-nodes-file="/config/static-nodes.json"
-discovery-enabled=false
+discovery-enabled=true
 
 # nat
 nat-method="NONE"
