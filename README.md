@@ -61,6 +61,22 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
   - `docker-compose -f docker-compose.yml -p ${NETWORK}-passive restart`
 3. If issue persists, run the commands under the [Usage](#usage) section in this order `Stop EVM` `Clean EVM` `Start EVM`
 
+- Disconnect - Inbound - 0x04 TOO_MANY_PEERS
+
+  If you have on logs the following message over and over, it means that the bootstrap nodes are full and there are no other nodes to connect too at the moment.
+
+```
+{"timestamp":"2022-03-29T13:54:32,453","container":"xxxx","level":"INFO","thread":"EthScheduler-Timer-0","class":"FullSyncTargetManager","message":"No sync target, waiting for peers: 0","throwable":""}
+```
+
+To avoid peer starvation and help others to connect to p2p network, the users should enable p2p discovery and have their nodes accessible so the p2p network doesn't rely only on bootstrap/static nodes.
+
+- https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Bootnodes/
+- https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Configuring-Ports/
+- https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Specifying-NAT/
+
+
+
 ### Permission Denied
 
 If you get a Permission Denied error,  e.g.:

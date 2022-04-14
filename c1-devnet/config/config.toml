@@ -53,7 +53,7 @@ permissions-nodes-config-file="/config/permissions_config.toml"
 # Discovery at boot is set to a list of static files, but will also discover new nodes should they be added
 # static nodes
 static-nodes-file="/config/static-nodes.json"
-discovery-enabled=false
+discovery-enabled=true
 
 # nat
 nat-method="NONE"
