@@ -33,7 +33,7 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
 
 ### Docker Compose Direct
 
-**NOTE**: Use `docker-compose-non-linux.yaml` instead for WSL & MacOS usage (disables Host Network mode and Set Ports)
+**NOTE**: Use `docker-compose-non-linux.yml` instead for WSL & MacOS usage (disables Host Network mode and Set Ports)
 
 - Switch to Directory of network you wish to Run EVM in Example: `cd c1-devnet`
 - Start EVM:
