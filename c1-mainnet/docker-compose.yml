@@ -9,17 +9,17 @@ services:
     environment:
       - OTEL_RESOURCE_ATTRIBUTES=service.name=c1-evm-passive
       - LOG4J_CONFIGURATION_FILE=/config/log-config.xml
-      - BESU_OPTS=-Xmx1G
+      - BESU_OPTS=-Xms16G -Xmx24G -XshowSettings:vm
     volumes:
       - ./config:/config
       - ./storage/data:/opt/besu/data
       - ./storage/logs:/tmp/besu
-    network_mode: "host"
-#    ports:
-#      - 8545:8545/tcp
-#      - 8546:8546/tcp
-#      - 8547:8547/tcp
-#      - 9545:9545/tcp
+#    network_mode: "host"
+    ports:
+      - 8545:8545/tcp
+      - 8546:8546/tcp
+      - 8547:8547/tcp
+      - 9545:9545/tcp
     logging:
       driver: "json-file"
       options:
