@@ -75,7 +75,9 @@ To avoid peer starvation and help others to connect to p2p network, the users sh
 - https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Configuring-Ports/
 - https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Specifying-NAT/
 
+### Full Node Stops Syncing with "no peers"
 
+This is a known problem with the Besu full node where for some reason it loses known static peers and it's not able to recover. During full sync this may happen a few times and it's resolved by restarting the node e.g. `docker restart XXX`
 
 ### Permission Denied
 
