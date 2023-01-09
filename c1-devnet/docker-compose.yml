@@ -2,7 +2,7 @@ version: '3.9'
 
 services:
   besu:
-    image: hyperledger/besu:22.1.3
+    image: ${BESU_REPO:-hyperledger/besu}:${BESU_TAG:-22.1.3}
     restart: "always"
     command:
       - --config-file=/config/config.toml
@@ -12,8 +12,8 @@ services:
       - BESU_OPTS=-Xmx1G
     volumes:
       - ./config:/config
-      - ./storage/data:/opt/besu/data
-      - ./storage/logs:/tmp/besu
+      - ${DATA_DIR:-./storage/data}:/opt/besu/data
+      - ${LOGS_DIR:-./storage/logs}:/tmp/besu
     network_mode: "host"
 #    ports:
 #      - 8545:8545/tcp

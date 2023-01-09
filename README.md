@@ -53,6 +53,20 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
   - Change `sync-mode="FULL"` to `sync-mode="FAST"`
   - **Optional**: Add number of minimum peers to config file (e.g.; `fast-sync-min-peers=2`). Also can be added to docker-compose.yml under the Command section as `--fast-sync-min-peers=2`
 
+### Using env file:
+Following settings can be customized using .env file. Example:
+```
+### Besu repository (default: hyperledger/besu)
+BESU_REPO=dcspark/besu
+### Besu tag (default: 22.1.3)
+BESU_TAG=22.1.3
+### Besu data dir (default: ./storage/data)
+DATA_DIR=./storage/data
+### Besu data dir (default: ./storage/logs)
+LOGS_DIR=./storage/logs
+```
+.env file has to be pleaced in `./c1-mainnet` or `./c1-devnet` directory
+
 ## Troubleshooting
 
 ### Not Syncing
