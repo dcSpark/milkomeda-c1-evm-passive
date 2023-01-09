@@ -46,11 +46,11 @@ export -f getNetworks
 
 print_help() {
   echo ">>> Usage:"
-  echo "Run EVM: ./start -n c1-devnet -r"
-  echo "Run EVM & Tail Logs: ./start -n c1-devnet -r -t"
+  echo "Run EVM: ./start.sh -n c1-devnet -r"
+  echo "Run EVM & Tail Logs: ./start.sh -n c1-devnet -r -t"
   echo "Stop EVM: ./start -n c1-devnet -s"
-  echo "Tail EVM Logs: ./start -n c1-devnet -t"
-  echo "Cleanup EVM Contains: ./start -n c1-devnet -c"
+  echo "Tail EVM Logs: ./start.sh -n c1-devnet -t"
+  echo "Cleanup EVM Contains: ./start.sh -n c1-devnet -c"
   echo ""
   echo ">>> Flags:"
   echo "-n | Milkomeda EVM Network to Run - Default: ${NETWORK}"
