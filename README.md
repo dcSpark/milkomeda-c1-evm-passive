@@ -65,6 +65,7 @@ DATA_DIR=./storage/data
 ### Besu data dir (default: ./storage/logs)
 LOGS_DIR=./storage/logs
 ```
+.env file has to be pleaced in `./c1-mainnet` or `./c1-devnet` directory
 
 ## Troubleshooting
 
