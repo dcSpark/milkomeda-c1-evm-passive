@@ -56,9 +56,9 @@ There is a simple start script provided to make starting/stoping/cleaning up eas
 ### Using env file:
 Following settings can be customized using .env file. Example:
 ```
-### Besu repository (default: hyperledger/besu)
+### Besu repository (mainnet default: hyperledger/besu; devnet default: dcspark/besu)
 BESU_REPO=dcspark/besu
-### Besu tag (default: 22.1.3)
+### Besu tag (mainnet default: 22.1.3; devnet default: 22.10.0-milkomeda-c1)
 BESU_TAG=22.1.3
 ### Besu data dir (default: ./storage/data)
 DATA_DIR=./storage/data
