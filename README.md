@@ -58,7 +58,7 @@ Following settings can be customized using .env file. Example:
 ```
 ### Besu repository (mainnet default: hyperledger/besu; devnet default: dcspark/besu)
 BESU_REPO=dcspark/besu
-### Besu tag (mainnet default: 22.1.3; devnet default: 22.10.0-milkomeda-c1)
+### Besu tag (mainnet default: 22.1.3; devnet default: 22.10.1-milkomeda-c1)
 BESU_TAG=22.1.3
 ### Besu data dir (default: ./storage/data)
 DATA_DIR=./storage/data

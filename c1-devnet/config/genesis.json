@@ -16,6 +16,10 @@
         {
           "block": 1934001,
           "blockperiodseconds": 4
+        },
+        {
+          "block": 11240000,
+          "blockperiodseconds": 2
         }
       ]
     }
