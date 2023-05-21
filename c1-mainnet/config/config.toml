@@ -33,7 +33,7 @@ metrics-host="0.0.0.0"
 metrics-port=9545
 
 # miner
-min-gas-price=60000000000
+min-gas-price=40000000000
 
 # debug
 revert-reason-enabled=true
