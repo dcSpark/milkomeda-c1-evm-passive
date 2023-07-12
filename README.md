@@ -2,9 +2,7 @@
 
 Milkomeda EVM node configurations for partners wanting to connect to the evm nodes p2p network
 
-**NOTE** Runs as a Archive Node by default
-
-See here for more info <https://besu.hyperledger.org/en/stable/Concepts/Node-Types/>
+**NOTE**: Besu supports two node types, commonly referred to as [Full nodes](https://besu.hyperledger.org/stable/public-networks/get-started/connect/sync-node#run-a-full-node) and [Archive nodes](https://besu.hyperledger.org/stable/public-networks/get-started/connect/sync-node#run-an-archive-node). This setup runs an **Archive Node** by default.
 
 - [Usage](#usage)
   - [Start Script](#start-script)
@@ -85,9 +83,9 @@ LOGS_DIR=./storage/logs
 
 To avoid peer starvation and help others to connect to p2p network, the users should enable p2p discovery and have their nodes accessible so the p2p network doesn't rely only on bootstrap/static nodes.
 
-- https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Bootnodes/
-- https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Configuring-Ports/
-- https://besu.hyperledger.org/en/stable/HowTo/Find-and-Connect/Specifying-NAT/
+- https://besu.hyperledger.org/stable/private-networks/how-to/configure/bootnodes
+- https://besu.hyperledger.org/stable/public-networks/how-to/connect/configure-ports
+- https://besu.hyperledger.org/stable/public-networks/how-to/connect/specify-nat
 
 ### Full Node Stops Syncing with "no peers"
 
